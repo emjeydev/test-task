@@ -18,6 +18,7 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 
@@ -56,7 +57,7 @@ public class OrderController {
             @ApiResponse(responseCode = "400", description = "Bad request: unsuccessful submission")
     })
     @PostMapping(value = "/customer/{customerId}/product/{productId}", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<Order> saveOrder(@RequestBody Order order, @PathVariable Long customerId, @PathVariable Long productId) {
+    public ResponseEntity<Order> saveOrder(@Valid @RequestBody Order order, @PathVariable Long customerId, @PathVariable Long productId) {
         Customer customer = customerRepository.findById(customerId).get();
         Product product = productRepository.findById(productId).get();
         order.setCustomer(customer);

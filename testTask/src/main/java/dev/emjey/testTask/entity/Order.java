@@ -3,6 +3,7 @@ package dev.emjey.testTask.entity;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
+import dev.emjey.testTask.Validation.CountOrder;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -32,6 +33,7 @@ public class Order {
     private Long id;
 
     @NotNull
+    @CountOrder
     @Column(name = "count", nullable = false)
     private int count;
 
