@@ -9,6 +9,14 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+// This file is made by EmJey
+// Project: testTast
+// FileName: CustomerController.java
+// Date: 2024/07/02
+// Modified Date: 2024/07/02
+// Email: emjeydev@gmail.com
+// Github: emjeydev
+
 @AllArgsConstructor
 @RestController
 @RequestMapping("/customer")

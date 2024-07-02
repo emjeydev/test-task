@@ -13,11 +13,11 @@ import java.util.List;
 // Github: emjeydev
 
 public interface ProductService {
-    Product findById(Long id);
+    Product findProductById(Long id);
 
-    Product save(Product product);
+    Product saveProduct(Product product);
 
     void deleteProduct(Long id);
 
-    List<Product> findAll();
+    List<Product> findAllProducts();
 }
