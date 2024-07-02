@@ -29,11 +29,15 @@ public class Order {
     @Column(name = "id")
     private Long id;
 
-    private Long customerId;
-
-    private Long productId;
-
     @NotNull
     @Column(name = "count", nullable = false)
     private int count;
+
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "customer_id", referencedColumnName = "id")
+    private Customer customer;
+
+    @ManyToOne
+    @JoinColumn(name = "product_id", referencedColumnName = "id")
+    private Product product;
 }

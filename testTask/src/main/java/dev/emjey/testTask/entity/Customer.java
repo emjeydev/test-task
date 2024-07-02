@@ -1,11 +1,14 @@
 package dev.emjey.testTask.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.antlr.v4.runtime.misc.NotNull;
+
+import java.util.List;
 
 
 // This file is made by EmJey
@@ -22,7 +25,7 @@ import org.antlr.v4.runtime.misc.NotNull;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "tb_customer")
+@Table(name = "customer")
 public class Customer {
 
     @Id
@@ -42,5 +45,9 @@ public class Customer {
 
     @Column(name = "description")
     private String description;
+
+    @JsonIgnore
+    @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL)
+    private List<Order> orders;
 
 }
