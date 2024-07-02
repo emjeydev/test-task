@@ -1,18 +1,18 @@
 package dev.emjey.testTask.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import jakarta.persistence.*;
+import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.antlr.v4.runtime.misc.NotNull;
-
 import java.util.List;
 
 
 // This file is made by EmJey
-// Project: testTast
+// Project: testTask
 // FileName: Customer.java
 // Date: 2024/07/02
 // Modified Date: 2024/07/02

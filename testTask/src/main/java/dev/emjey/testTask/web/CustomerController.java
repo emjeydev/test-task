@@ -13,13 +13,12 @@ import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.ErrorResponse;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 // This file is made by EmJey
-// Project: testTast
+// Project: testTask
 // FileName: CustomerController.java
 // Date: 2024/07/02
 // Modified Date: 2024/07/02
@@ -45,13 +44,17 @@ public class CustomerController {
     @Operation(summary = "Create Customer", description = "Creates a customer from the provided payload")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "201", description = "Successful creation of customer"),
-            @ApiResponse(responseCode = "400", description = "Bad request: unsuccessful submission", content = @Content(schema = @Schema(implementation = ErrorResponse.class)))
+            @ApiResponse(responseCode = "400", description = "Bad request: unsuccessful submission")
     })
     @PostMapping(produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Customer> saveCustomer(@RequestBody Customer course) {
         return new ResponseEntity<>(customerService.saveCustomer(course), HttpStatus.CREATED);
     }
 
+    @Operation(summary = "Delete a Customer", description = "Deletes a customer according to provided id")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "204", description = "Successfully deleted the customer")
+    })
     @DeleteMapping("/{id}")
     public ResponseEntity<HttpStatus> deleteCustomer(@PathVariable Long id) {
         customerService.deleteCustomer(id);

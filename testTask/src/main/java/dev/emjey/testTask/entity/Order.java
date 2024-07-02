@@ -1,14 +1,16 @@
 package dev.emjey.testTask.entity;
 
-import jakarta.persistence.*;
+import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.antlr.v4.runtime.misc.NotNull;
+
 
 // This file is made by EmJey
-// Project: testTast
+// Project: testTask
 // FileName: Order.java
 // Date: 2024/07/02
 // Modified Date: 2024/07/02
