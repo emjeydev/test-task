@@ -34,7 +34,7 @@ public class CustomerController {
 
     @Operation(summary = "Retrieves a customer", description = "Returns a customer")
     @ApiResponses(value = {
-            @ApiResponse(responseCode = "200", description = "Successful retrieval of contact", content = @Content(schema = @Schema(implementation = Customer.class))),
+            @ApiResponse(responseCode = "200", description = "Successful retrieval of customer", content = @Content(schema = @Schema(implementation = Customer.class))),
     })
     @GetMapping(value = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Customer> getCustomer(@PathVariable Long id) {
@@ -61,7 +61,7 @@ public class CustomerController {
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 
-    @Operation(summary = "Retrieves contacts", description = "Provides a list of all customers")
+    @Operation(summary = "Retrieves customers", description = "Provides a list of all customers")
     @ApiResponse(responseCode = "200", description = "Successful retrieval of customers", content = @Content(array = @ArraySchema(schema = @Schema(implementation = Customer.class))))
     @GetMapping(value = "/all", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<List<Customer>> getCustomers() {
