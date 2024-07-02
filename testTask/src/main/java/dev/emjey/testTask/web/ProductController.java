@@ -11,6 +11,7 @@ import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -37,7 +38,7 @@ public class ProductController {
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Successful retrieval of product", content = @Content(schema = @Schema(implementation = Product.class))),
     })
-    @GetMapping("/{id}")
+    @GetMapping(value = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Product> getProduct(@PathVariable Long id) {
         return new ResponseEntity<>(productService.findProductById(id), HttpStatus.OK);
     }
@@ -47,7 +48,7 @@ public class ProductController {
             @ApiResponse(responseCode = "201", description = "Successful creation of product"),
             @ApiResponse(responseCode = "400", description = "Bad request: unsuccessful submission")
     })
-    @PostMapping
+    @PostMapping(produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Product> saveProduct(@RequestBody Product course) {
         return new ResponseEntity<>(productService.saveProduct(course), HttpStatus.CREATED);
     }
@@ -56,7 +57,7 @@ public class ProductController {
     @ApiResponses(value = {
             @ApiResponse(responseCode = "204", description = "Successfully deleted the product")
     })
-    @DeleteMapping("/{id}")
+    @DeleteMapping(value = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<HttpStatus> deleteProduct(@PathVariable Long id) {
         productService.deleteProduct(id);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
@@ -64,7 +65,7 @@ public class ProductController {
 
     @Operation(summary = "Retrieves Products", description = "Provides a list of all products")
     @ApiResponse(responseCode = "200", description = "Successful retrieval of products", content = @Content(array = @ArraySchema(schema = @Schema(implementation = Product.class))))
-    @GetMapping("/all")
+    @GetMapping(value = "/all", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<List<Product>> getProducts() {
         return new ResponseEntity<>(productService.findAllProducts(), HttpStatus.OK);
     }
