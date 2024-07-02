@@ -51,20 +51,21 @@ public class OrderServiceImpl implements OrderService {
 
     @Override
     public void deleteOrder(Long customerId, Long productId) {
+        orderRepository.deleteByCustomerIdAndProductId(customerId, productId);
     }
 
     @Override
     public List<Order> getCustomerOrders(Long customerId) {
-        return List.of();
+        return orderRepository.findByCustomerId(customerId);
     }
 
     @Override
     public List<Order> getProductOrders(Long productId) {
-        return List.of();
+        return orderRepository.findByProductId(productId);
     }
 
     @Override
     public List<Order> getAllOrders() {
-        return List.of();
+        return (List<Order>) orderRepository.findAll();
     }
 }
