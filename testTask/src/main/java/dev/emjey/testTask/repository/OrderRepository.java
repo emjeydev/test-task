@@ -12,4 +12,5 @@ import org.springframework.data.repository.CrudRepository;
 // Github: emjeydev
 
 public interface OrderRepository extends CrudRepository<Order, Long> {
+    Order findByCustomerIdAndProductId(Long customerId, Long productId);
 }
