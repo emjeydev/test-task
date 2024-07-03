@@ -2,6 +2,7 @@ package dev.emjey.testTask.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
 import lombok.AllArgsConstructor;
@@ -33,7 +34,8 @@ public class Customer {
     @Column(name = "id")
     private Long id;
 
-    @Column(name = "first_name")
+    @NotNull
+    @Column(name = "first_name", nullable = false)
     private String firstName;
 
     @Column(name = "last_name")
@@ -49,5 +51,13 @@ public class Customer {
     @JsonIgnore
     @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL)
     private List<Order> orders;
+
+    public Customer(Long id,String firstName, String lastName, String email, String description) {
+        this.id = id;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+        this.description = description;
+    }
 
 }

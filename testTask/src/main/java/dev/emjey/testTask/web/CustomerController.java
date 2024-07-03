@@ -15,6 +15,7 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 // This file is made by EmJey
@@ -47,7 +48,7 @@ public class CustomerController {
             @ApiResponse(responseCode = "400", description = "Bad request: unsuccessful submission")
     })
     @PostMapping(produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<Customer> saveCustomer(@RequestBody Customer course) {
+    public ResponseEntity<Customer> saveCustomer(@Valid @RequestBody Customer course) {
         return new ResponseEntity<>(customerService.saveCustomer(course), HttpStatus.CREATED);
     }
 
